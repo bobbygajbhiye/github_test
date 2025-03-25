@@ -25,11 +25,13 @@ jobs:
     needs: deploy
 
     steps:
-    - name: Download Artifacts
+    - name: Download artifact
       uses: actions/download-artifact@v4
       with:
-        name: spam_classifier  # Ensure the names match
-        path: artifacts
+        name: spam_classifier
+        path: ${{ github.workspace }}/artifact-staging/
+        workflow: ci.yml  # or the workflow file name
+        run_id: ${{ github.event.workflow_run.id }}
 
     - name: Verify Downloaded Artifact
       run: |
