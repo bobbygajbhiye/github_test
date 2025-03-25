@@ -1,11 +1,7 @@
 name: Continuous Deployment
 
 on:
-  workflow_run:
-    workflows:
-      - Continuous Integration
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -30,7 +26,8 @@ jobs:
       with:
         name: spam_classifier
         path: ${{ github.workspace }}/artifact-staging/
-        workflow: ci.yml  # or the workflow file name
+        github_token: ${{ github.token }}
+        repository: ${{ github.repository }}
         run_id: ${{ github.event.workflow_run.id }}
 
     - name: Verify Downloaded Artifact
