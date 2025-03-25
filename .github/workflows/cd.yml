@@ -33,4 +33,4 @@ jobs:
     - name: Verify Downloaded Artifact
       run: |
         echo "Files in downloaded artifacts:"
-        ls artifacts
+        ls artifact-staging
