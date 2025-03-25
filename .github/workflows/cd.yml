@@ -26,9 +26,9 @@ jobs:
       with:
         name: spam_classifier
         path: ${{ github.workspace }}/artifact-staging/
-        github_token: ${{ github.token }}
+        github-token: ${{ github.token }}
         repository: ${{ github.repository }}
-        run_id: 14056045124
+        run-id: 14056045124
 
     - name: Verify Downloaded Artifact
       run: |
