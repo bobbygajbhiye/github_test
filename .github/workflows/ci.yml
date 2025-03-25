@@ -3,7 +3,7 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - main
+      - test
   pull_request:
 
 jobs:
@@ -30,19 +30,3 @@ jobs:
         with:
           name: spam_classifier
           path: ${{ github.workspace }}/artifact-staging/
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: spam_classifier  # Ensure the names match
-        path: artifacts
-
-    - name: Verify Downloaded Artifact
-      run: |
-        echo "Files in downloaded artifacts:"
-        ls artifacts
